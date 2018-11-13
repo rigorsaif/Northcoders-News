@@ -1,7 +1,32 @@
-.container
-{
+/* .loginContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  background: yellow;
+} */
+
+.loginContainer {
   height: 100vh;
+  background: url("./press.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: sans-serif;
+}
+
+.loginForm {
+  width: 320px;
+  height: 320px;
+  /* background: #000; */
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+}
+
+.logo{
+  width: 20%;
+  height: 10%;
 }

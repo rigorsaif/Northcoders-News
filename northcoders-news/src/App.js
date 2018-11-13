@@ -1,27 +1,33 @@
 import React, { Component } from "react";
 import "./App.css";
-import LoginPage from "./components/LoginPage";
-import { Router } from "../node_modules/@reach/router";
+import { Link, Router } from "../node_modules/@reach/router";
 import Articles from "./components/Articles";
+import Auth from "./components/Auth";
+import * as api from "./api/utils";
 
 class App extends Component {
   state = {
-    username: null,
-    password: ""
+    user: null
   };
   render() {
-    return <div className="App">
-        {!this.state.username && <LoginPage handleSubmit={this.handleSubmit} />}
-        <Router >
-          <Articles path="/home" />
-        </Router>
-      </div>;
+    return (
+      <div className="App">
+        <Auth username={this.state.user} login={this.login}>
+          <Router>
+            <Articles path="/" />
+            <Articles path="/articles/:slug" />
+          </Router>
+        </Auth>
+      </div>
+    );
   }
 
-  handleSubmit = (username, password) => {
-    this.setState({
-      username,
-      password
+  login = (userName, password) => {
+    api.getUser(userName).then(userData => {
+      const [user] = userData.user;
+      this.setState({
+        user
+      });
     });
   };
 }
