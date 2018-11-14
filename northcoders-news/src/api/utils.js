@@ -11,25 +11,18 @@ export const getArticlesAndTopicsController = async (
       slug ? "/" + slug : ""
     }/articles/${articleId || ""}`
   );
-  return data.articles;
+  return data.articles || (data.article = [data.article]);
 };
 
 export const getAllTopics = async () => {
   const { data } = await axios.get(`${BASE_URL}/topics`);
   return data.topics;
 };
-export const postArticlesAndTopicsController = async (
-  topics,
-  slug,
-  articleId
-) => {
+export const postArticle = async newArticle => {
   const { data } = await axios.post(
-    `${BASE_URL}/${topics || ""}${
-      slug ? "/" + slug : ""
-    }/articles/${articleId || ""}`,
-    {}
+    `${BASE_URL}/topics/${newArticle.belongs_to}/articles`,
+    newArticle
   );
-  console.log(data.articles);
   return data;
 };
 
@@ -40,39 +33,30 @@ export const getArticleComments = async articleId => {
   return data.comments;
 };
 
-export const postArticleComments = async (articleId, comment) => {
-  const { data } = await axios.post(`${BASE_URL}/${articleId}/comments`, {
+export const postArticleComments = async comment => {
+  const { data } = await axios.post(
+    `${BASE_URL}/articles/${comment.belongs_to}/comments`,
     comment
-  });
-  console.log(data.comments);
-  return data.comments;
-};
-
-export const patchArticleVotes = async (articleId, vote) => {
-  const { data } = await axios.patch(
-    `${BASE_URL}/articles/${articleId}?vote=${vote}`
   );
-  console.log(data);
-  return data;
-};
-
-export const patchCommentVotes = async (commentId, vote) => {
-  const { data } = await axios.patch(
-    `${BASE_URL}/comments/${commentId}?vote=${vote}`
-  );
-  console.log(data.comment);
   return data.comment;
+};
+
+export const patchVotes = async (section, id, vote) => {
+  const { data } = await axios.patch(
+    `${BASE_URL}/${section}/${id}?vote=${vote}`
+  );
+  return data;
 };
 
 export const deleteComment = async commentId => {
   const { data } = await axios.delete(`${BASE_URL}/comments/${commentId}`);
-  console.log(data);
+  //console.log(data);
   return data;
 };
 
 export const getUserById = async userId => {
   const { data } = await axios.get(`${BASE_URL}/users/${userId}`);
-  console.log(data);
+  //console.log(data);
   return data;
 };
 

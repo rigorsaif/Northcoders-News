@@ -6,12 +6,26 @@ body {
   text-align: center;
   height: 100vh;
   border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 100px, 1fr, 100px
 }
-ul 
-{
+.articlesList {
+  margin: 70px;
+  position: absolute;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  overflow: scroll;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+ul {
   list-style: none;
 }
-
 /* .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;

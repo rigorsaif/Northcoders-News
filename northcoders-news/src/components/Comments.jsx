@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../api/utils";
-import Button from "./Button";
+import Vote from "./Vote";
+import DeleteComment from "./DeleteComment";
 class Comments extends Component {
   state = {
     comments: []
@@ -15,18 +16,15 @@ class Comments extends Component {
                 <div className="comment">
                   <h6>{comment.created_by.username}</h6>
                   <p>{comment.body}</p>
-                  <Button
-                    name="->"
-                    className="voteUp"
-                    func={() => this.handleVotes(comment._id, "up")}
+                  <Vote
+                    section="comments"
+                    id={comment._id}
+                    votes={comment.votes}
                   />
-                  <p>{comment.votes}</p>
-                  <Button
-                    name="<-"
-                    className="voteUp"
-                    func={() => this.handleVotes(comment._id, "down")}
-                  />
-                  <p>{comment.created_at}</p>
+                  {comment.created_by.username === this.props.user.username && (
+                    <DeleteComment commentId={comment._id} />
+                  )}
+                  <p>{new Date(comment.created_at).toDateString()}</p>
                 </div>
               </li>
             );
@@ -35,28 +33,18 @@ class Comments extends Component {
       </>
     );
   }
-
-  handleVotes = (id, vote) => {
-    api.patchCommentVotes(id, vote).then(comment => {
-      const comments = this.state.comments.map(prevComment => {
-        if (prevComment._id === comment._id) {
-          return comment;
-        } else {
-          return prevComment;
-        }
-      });
-      this.setState({ comments });
-    });
-  };
   componentDidMount() {
     this.fetchComments();
   }
   fetchComments = () => {
-    api.getArticleComments("5bd3234536161531614a9cf0").then(comments => {
+    api.getArticleComments(this.props.id).then(comments => {
       this.setState({
         comments
       });
     });
+  };
+  updateCommentsWhenPosting = newComment => {
+    this.setState({ comments: [...this.state.comments, newComment] });
   };
 }
 

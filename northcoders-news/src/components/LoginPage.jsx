@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./LoginPage.css";
+import "./style/LoginPage.css";
 class LoginPage extends Component {
   state = {
     username: "jessjelly",

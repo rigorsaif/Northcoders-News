@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Link, Router } from "../node_modules/@reach/router";
+import { Router } from "../node_modules/@reach/router";
 import Articles from "./components/Articles";
 import Auth from "./components/Auth";
 import * as api from "./api/utils";
+import Profile from "./components/Profile";
 
 class App extends Component {
   state = {
@@ -13,9 +14,11 @@ class App extends Component {
     return (
       <div className="App">
         <Auth username={this.state.user} login={this.login}>
-          <Router>
-            <Articles path="/" />
-            <Articles path="/articles/:slug" />
+          <Profile signOut={this.signOut} user={this.state.user} />
+          <Router className="articleContainer">
+            <Articles path="/" user={this.state.user} />
+            <Articles path="/articles/:slug/:id" user={this.state.user} />
+            <Articles path="/articles/:slug" user={this.state.user} />
           </Router>
         </Auth>
       </div>
@@ -28,6 +31,12 @@ class App extends Component {
       this.setState({
         user
       });
+    });
+  };
+
+  signOut = () => {
+    this.setState({
+      user: null
     });
   };
 }
