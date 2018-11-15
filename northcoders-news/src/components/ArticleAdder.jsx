@@ -8,31 +8,16 @@ class ArticleAdder extends Component {
     created_by: ""
   };
   render() {
-    return (
-      <div>
+    return <div>
         <form action="" onSubmit={this.handleSubmit}>
           <label htmlFor="title">Enter title </label>
-          <input
-            type="text"
-            name="title"
-            id="title"
-            onChange={this.handleChange}
-            value={this.state.title}
-          />
+          <input type="text" name="title" id="title" onChange={this.handleChange} value={this.state.title} />
           <br />
-          <label htmlFor="body">your article </label>
-          <textarea
-            name="body"
-            id="body"
-            cols="30"
-            rows="10"
-            onChange={this.handleChange}
-            value={this.state.body}
-          />
-          <button>Submit</button>
+          <label htmlFor="body">your article </label> <br />
+          <textarea name="body" id="body" cols="30" rows="10" onChange={this.handleChange} value={this.state.body} />
+          <button className="btn btn-outline-success">Submit</button>
         </form>
-      </div>
-    );
+      </div>;
   }
   handleChange = event => {
     const { belongs_to, created_by } = this.props;

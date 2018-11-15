@@ -1,6 +1,6 @@
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 import * as api from "../api/utils";
-import Nav from "./Nav";
 import { Link } from "@reach/router";
 import "./style/Articles.css";
 import Comments from "./Comments";
@@ -11,7 +11,8 @@ class Articles extends Component {
   state = {
     articles: null,
     addArticle: false,
-    addComment: false
+    addComment: false,
+    newComment: false
   };
   componentDidUpdate(prevProp) {
     if (this.props.slug !== prevProp.slug || this.props.id !== prevProp.id) {
@@ -22,14 +23,21 @@ class Articles extends Component {
     this.fetchArticles();
   }
   render() {
+    const { slug } = this.props;
     const { articles, addArticle } = this.state;
     return articles ? (
       <main className="articleContainer">
-        <Nav />
         <div className="showcase">
           <ul className="articlesList">
-            <button onClick={this.toggleAddArticle}>add new</button>
-            {addArticle && (
+            {slug && (
+              <button
+                onClick={this.toggleAddArticle}
+                className="btn btn-outline-primary m-2"
+              >
+                add new
+              </button>
+            )}
+            {addArticle && slug && (
               <ArticleAdder
                 belongs_to={this.props.slug}
                 created_by={this.props.user._id}
@@ -50,7 +58,9 @@ class Articles extends Component {
                       section={"articles"}
                       id={article._id}
                     />
-                    <p>comments: {article.comment_count}</p>
+                    <p className="btn btn-outline-warning m-2">
+                      comments: {article.comment_count}
+                    </p>
                     <p>{new Date(article.created_at).toDateString()}</p>
                   </li>
                 );
@@ -67,16 +77,26 @@ class Articles extends Component {
                       section={"articles"}
                       id={article._id}
                     />
-                    <p>comments: {article.comment_count}</p>
-                    <Comments id={article._id} user={this.props.user} />
+                    <p className="btn btn-outline-warning m-2">
+                      comments: {article.comment_count}
+                    </p>
                     <p>{new Date(article.created_at).toDateString()}</p>
-                    <button onClick={this.toggleAddComment}>
+                    <Comments
+                      id={article._id}
+                      user={this.props.user}
+                      toggle={this.state.newComment}
+                    />
+                    <button
+                      onClick={this.toggleAddComment}
+                      className="btn btn-outline-primary m-2"
+                    >
                       Add new comment
                     </button>
                     {this.state.addComment && (
                       <CommentAdder
                         belongs_to={article._id}
                         created_by={this.props.user._id}
+                        toggleNewComment={this.toggleNewComment}
                       />
                     )}
                   </li>
@@ -115,6 +135,10 @@ class Articles extends Component {
     this.setState({
       articles: [newArticle, ...this.state.articles]
     });
+  };
+
+  toggleNewComment = () => {
+    this.setState({ newComment: !this.state.newComment });
   };
 }
 

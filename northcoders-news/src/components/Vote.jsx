@@ -7,9 +7,10 @@ class Vote extends Component {
   };
   render() {
     let { voteChange } = this.state;
-    return (
-      <div>
-        <p>{this.props.votes + voteChange}</p>
+    return <div>
+      <p className="btn btn-outline-warning m-2" disabled>
+          {this.props.votes + voteChange}
+        </p>
         <button
           onClick={() =>
             voteChange === 0
@@ -18,11 +19,12 @@ class Vote extends Component {
               ? this.handleVote("down")
               : false
           }
+        className={voteChange === 0
+          ? "btn btn-outline-primary" : "btn btn-outline-danger"}
         >
           {voteChange ? "Dislike" : "Like"}
         </button>
-      </div>
-    );
+      </div>;
   }
 
   handleVote = vote => {

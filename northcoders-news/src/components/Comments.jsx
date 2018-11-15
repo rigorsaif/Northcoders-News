@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import * as api from "../api/utils";
 import Vote from "./Vote";
 import DeleteComment from "./DeleteComment";
+import "./style/Comments.css";
 class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    delete: false
   };
   render() {
+    const { username } = this.props.user;
     return (
       <>
         <ul className="commentsContainer">
@@ -14,6 +17,11 @@ class Comments extends Component {
             return (
               <li key={comment._id}>
                 <div className="comment">
+                  <img
+                    src={comment.created_by.avatar_url}
+                    alt="avatar"
+                    className="commentAvatar"
+                  />
                   <h6>{comment.created_by.username}</h6>
                   <p>{comment.body}</p>
                   <Vote
@@ -21,8 +29,11 @@ class Comments extends Component {
                     id={comment._id}
                     votes={comment.votes}
                   />
-                  {comment.created_by.username === this.props.user.username && (
-                    <DeleteComment commentId={comment._id} />
+                  {comment.created_by.username === username && (
+                    <DeleteComment
+                      commentId={comment._id}
+                      toggle={this.toggleDelete}
+                    />
                   )}
                   <p>{new Date(comment.created_at).toDateString()}</p>
                 </div>
@@ -36,6 +47,15 @@ class Comments extends Component {
   componentDidMount() {
     this.fetchComments();
   }
+  componentDidUpdate(prevProp, prevState) {
+    if (
+      prevProp.toggle !== this.props.toggle ||
+      prevState.delete !== this.state.delete
+    ) {
+      console.log("updated");
+      this.fetchComments();
+    }
+  }
   fetchComments = () => {
     api.getArticleComments(this.props.id).then(comments => {
       this.setState({
@@ -45,6 +65,11 @@ class Comments extends Component {
   };
   updateCommentsWhenPosting = newComment => {
     this.setState({ comments: [...this.state.comments, newComment] });
+  };
+  toggleDelete = () => {
+    this.setState({
+      delete: !this.state.delete
+    });
   };
 }
 

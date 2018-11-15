@@ -10,24 +10,40 @@
   grid-column: 1/-1;
   grid-row: 1/-1;
   height: 100vh;
-  background: url("./press.jpg");
-  background-size: cover;
-  background-position: center;
   font-family: sans-serif;
+  /* filter: blur(8px);
+  -webkit-filter: blur(8px); */
 }
 
 .loginForm {
-  width: 320px;
-  height: 320px;
-  color: #fff;
+  width: 45%;
+  height: 200px;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-weight: bold;
+  border: 3px solid #f1f1f1;
+  position: absolute;
   top: 50%;
   left: 50%;
-  position: absolute;
   transform: translate(-50%, -50%);
-  box-sizing: border-box;
+  z-index: 2;
+  padding: 20px;
+  text-align: center;
 }
-
-.logo{
+.loginForm input {
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bolder;
+  padding-left: 20px;
+  text-emphasis: center;
+  height: 30px;
+  margin-left: 10px;
+}
+.logo {
   width: 20%;
-  height: 10%;
+  height: 12%;
+  margin-left: 20px;
+  margin-top: 10px;
 }

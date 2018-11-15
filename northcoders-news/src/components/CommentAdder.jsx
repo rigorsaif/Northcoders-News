@@ -20,7 +20,7 @@ class CommentAdder extends Component {
           >
             add comment
           </textarea>
-          <button>post</button>
+          <button className="btn btn-outline-success m-2">post</button>
         </form>
       </div>
     );
@@ -39,11 +39,10 @@ class CommentAdder extends Component {
   handleSubmit = event => {
     event.preventDefault();
     api.postArticleComments(this.state).then(article => {
-      this.setState({
-        body: "",
-        belongs_to: "",
-        created_by: ""
-      });
+      const { toggleNewComment } = this.props;
+      this.setState({ body: "", belongs_to: "", created_by: "" }, () =>
+        toggleNewComment()
+      );
     });
   };
 }
