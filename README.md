@@ -3,7 +3,7 @@
 Northcoders News is a news feed app to demonstrate a simple one page react website. This repo contains the front-end of the app with a back-end server which i have build earlier with Express server and MongoDB.
 
 the deployed webite for front end
-[Click this link to view my back-end server](https://minia-news.netlify.com/)
+[Click this link to view front-end](https://minia-news.netlify.com/)
 
 the back-end api is hosted on heroku
 [Click this link to view my back-end server](https://quiet-thicket-37970.herokuapp.com/)
