@@ -48,10 +48,17 @@ $ npm install
 
 The dependencies that will install are:
 
+<<<<<<< HEAD
 - @reach/router: ^1.2.1
 - axios: ^0.18.0
 - react: ^16.6.0
 - react-bootstrap: ^0.32.4
+=======
+- @reach/router
+- axios
+- react
+- react-bootstrap
+>>>>>>> e82b9af1c7e20c813fd4d186858cc94817f1f153
 
 ### Development
 
