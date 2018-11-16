@@ -111,15 +111,25 @@ class Articles extends Component {
     );
   }
   fetchArticles = () => {
-    let { slug, id } = this.props;
+    let { slug, id, navigate } = this.props;
     let topic = null;
     if (slug && !id) topic = "topics";
     if (id) slug = null;
-    api.getArticlesAndTopicsController(topic, slug, id).then(articles => {
-      this.setState({
-        articles
-      });
-    });
+    api
+      .getArticlesAndTopicsController(topic, slug, id)
+      .then(articles => {
+        this.setState({
+          articles
+        });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            status: 404,
+            msg: "Page not found"
+          }
+        })
+      );
   };
 
   toggleAddArticle = () => {

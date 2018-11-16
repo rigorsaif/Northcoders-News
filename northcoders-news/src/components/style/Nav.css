@@ -1,0 +1,52 @@
+/* .topicMenu {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  float: left;
+}
+.topicMenu li {
+  display: block;
+  transition-duration: 0.5s;
+  margin: 5px;
+}
+ */
+.topicMenu {
+  grid-area: n;
+  margin-top: 18px;
+}
+.topicMenu li {
+  display: block;
+  transition-duration: 0.5s;
+}
+
+.topicMenu li:hover {
+  cursor: pointer;
+}
+
+.topicMenu li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1px;
+  display: none;
+}
+
+.topicMenu li:hover > ul,
+.topicMenu li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+}
+
+.topicMenu li ul li {
+  clear: both;
+  width: 100%;
+}
+
+@media screen and (max-width: 800px) {
+  .topicMenu {
+  grid-area: n;
+
+}
+}

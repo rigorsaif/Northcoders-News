@@ -1,0 +1,6 @@
+.commentsContainer .comment .commentAvatar {
+  height: 60px;
+  width: 60px;
+  border: 1px solid black;
+  border-radius: 50%;
+}

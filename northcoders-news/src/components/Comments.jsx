@@ -57,11 +57,12 @@ class Comments extends Component {
     }
   }
   fetchComments = () => {
-    api.getArticleComments(this.props.id).then(comments => {
-      this.setState({
-        comments
-      });
-    });
+    api
+      .getArticleComments(this.props.id)
+      .then(comments => {
+        this.setState({ comments });
+      })
+      .catch(err => this.props.navigate("/error"));
   };
   updateCommentsWhenPosting = newComment => {
     this.setState({ comments: [...this.state.comments, newComment] });

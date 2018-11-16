@@ -50,13 +50,11 @@ export const patchVotes = async (section, id, vote) => {
 
 export const deleteComment = async commentId => {
   const { data } = await axios.delete(`${BASE_URL}/comments/${commentId}`);
-  //console.log(data);
   return data;
 };
 
 export const getUserById = async userId => {
   const { data } = await axios.get(`${BASE_URL}/users/${userId}`);
-  //console.log(data);
   return data;
 };
 

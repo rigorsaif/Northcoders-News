@@ -9,7 +9,7 @@ body {
 .wholePage {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  grid-template-columns: 1fr 5fr 1fr;
+  grid-template-rows: 1fr 5fr 1fr;
   background: url("./components/style/Blur_pexels-97050.jpg");
   background-size: cover;
   background-position: center;
@@ -24,34 +24,31 @@ ul {
 }
 .home {
   grid-area: h;
-  
 }
 
-/* .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and(max-width: 660px) {
+  .wholePage {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 40px 5fr 40px;
+    grid-template-rows: 1fr 5fr 1fr;
+    background: url("./components/style/Blur_pexels-97050.jpg");
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+    grid-template-areas:
+      "n n n"
+      "main main main"
+      "f f f";
   }
-  to {
-    transform: rotate(360deg);
+  body {
+    margin: 0px;
+    padding: 0px;
   }
-} */
+  * {
+    box-sizing: border-box;
+  }
+  .home {
+    grid-area: h;
+  }
+}

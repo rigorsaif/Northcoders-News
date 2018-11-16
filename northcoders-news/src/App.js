@@ -6,39 +6,58 @@ import Auth from "./components/Auth";
 import * as api from "./api/utils";
 import Profile from "./components/Profile";
 import Nav from "./components/Nav";
+import Errors from "./components/Errors";
 
 class App extends Component {
   state = {
-    user: null
+    user: null,
+    error: null
   };
   render() {
-    return <div className="App">
+    return (
+      <div className="App">
         <div className="wholePage">
-          <Auth username={this.state.user} login={this.login}>
+          <Auth
+            username={this.state.user}
+            login={this.login}
+            error={this.state.error}
+          >
             <Link to="/">
-              <h2 className="btn btn-primary m-3">
-                Home
-              </h2>
+              <h2 className="btn btn-primary m-3">Home</h2>
             </Link>
             <Nav className="nav" />
-            <Profile signOut={this.signOut} user={this.state.user} className="profile" />
+            <Profile
+              signOut={this.signOut}
+              user={this.state.user}
+              className="profile"
+            />
             <Router className="articleContainer">
               <Articles path="/" user={this.state.user} />
               <Articles path="/articles/:slug/:id" user={this.state.user} />
               <Articles path="/articles/:slug" user={this.state.user} />
+              <Errors path="/error" />
             </Router>
           </Auth>
         </div>
-      </div>;
+      </div>
+    );
   }
 
   login = (userName, password) => {
-    api.getUser(userName).then(userData => {
-      const [user] = userData.user;
-      this.setState({
-        user
-      });
-    });
+    api
+      .getUser(userName)
+      .then(userData => {
+        const [user] = userData.user;
+        this.setState({
+          user,
+          error:null
+        });
+      })
+      .catch(err =>
+        this.setState({
+          error: err
+        })
+      );
   };
 
   signOut = () => {

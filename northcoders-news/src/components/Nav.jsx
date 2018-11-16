@@ -17,7 +17,7 @@ class Nav extends Component {
             {this.state.topics.map(topic => {
               return (
                 <Link to={`/articles/${topic.slug}`} key={topic._id}>
-                  <li className="btn btn-outline-warning">{topic.slug}</li>
+                  <li className="btn btn-outline-primary">{topic.slug}</li>
                 </Link>
               );
             })}

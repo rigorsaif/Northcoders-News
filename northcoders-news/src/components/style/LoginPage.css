@@ -47,3 +47,49 @@
   margin-left: 20px;
   margin-top: 10px;
 }
+.loginForm .loginError {
+  color: red;
+}
+@media screen and (max-width: 770px) {
+  .loginContainer {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    height: 100vh;
+    font-family: sans-serif;
+  }
+
+  .loginForm {
+    width: 90%;
+    height: 45%;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    margin: 0%;
+  }
+  .loginForm h4 {
+    padding-top: 40px;
+    font-weight: bolder;
+  }
+  .loginForm input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    text-emphasis: center;
+    height: 30px;
+  }
+  .logo {
+    width: 90%;
+    height: 12%;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+}
