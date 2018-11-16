@@ -58,9 +58,11 @@ class Articles extends Component {
                       section={"articles"}
                       id={article._id}
                     />
-                    <p className="btn btn-outline-warning m-2">
-                      comments: {article.comment_count}
-                    </p>
+                    <Link to={`/articles/${article.belongs_to}/${article._id}`}>
+                      <p className="btn btn-outline-warning m-2">
+                        comments: {article.comment_count}
+                      </p>
+                    </Link>
                     <p>{new Date(article.created_at).toDateString()}</p>
                   </li>
                 );

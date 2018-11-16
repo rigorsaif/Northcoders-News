@@ -8,7 +8,7 @@ class Vote extends Component {
   render() {
     let { voteChange } = this.state;
     return <div>
-      <p className="btn btn-outline-warning m-2" disabled>
+      <p className="btn btn-outline-warning m-2" disabled={true}>
           {this.props.votes + voteChange}
         </p>
         <button
