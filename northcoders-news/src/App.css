@@ -10,7 +10,7 @@ body {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-rows: 1fr 5fr 1fr;
-  background: url("./components/style/Blur_pexels-97050.jpg");
+  background: url("./components/style/press.jpg");
   background-size: cover;
   background-position: center;
   font-family: sans-serif;

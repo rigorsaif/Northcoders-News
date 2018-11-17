@@ -52,7 +52,10 @@ class Articles extends Component {
                     <Link to={`/articles/${article.belongs_to}/${article._id}`}>
                       <h4>{article.title}</h4>
                     </Link>
-                    <h5>Author: {article.created_by.username}</h5>
+                    <h5>
+                      Author:{" "}
+                      {article.created_by.username || this.props.user.username}
+                    </h5>
                     <Vote
                       votes={article.votes}
                       section={"articles"}
@@ -64,6 +67,15 @@ class Articles extends Component {
                       </p>
                     </Link>
                     <p>{new Date(article.created_at).toDateString()}</p>
+                    <p>
+                      tags:
+                      <Link
+                        to={`/articles/${article.belongs_to}/`}
+                      >
+                        {" "}
+                        {article.belongs_to}
+                      </Link>
+                    </p>
                   </li>
                 );
               } else {
@@ -73,7 +85,10 @@ class Articles extends Component {
                       <h4>{article.title}</h4>
                     </Link>
                     <p>{article.body}</p>
-                    <h5>Author: {article.created_by.username}</h5>
+                    <h5>
+                      Author:{" "}
+                      {article.created_by.username || this.props.user.username}
+                    </h5>
                     <Vote
                       votes={article.votes}
                       section={"articles"}

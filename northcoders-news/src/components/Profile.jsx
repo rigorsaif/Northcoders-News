@@ -14,7 +14,7 @@ class Profile extends Component {
           onClick={this.toggleProfile}
           className="btn btn-outline-primary"
         >
-          profile
+          {user.username.toUpperCase()}
         </button>
         <button onClick={signOut} className="btn btn-outline-danger">
           Sign Out

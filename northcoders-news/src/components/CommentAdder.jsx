@@ -17,6 +17,7 @@ class CommentAdder extends Component {
             rows="10"
             onChange={this.handleChange}
             value={this.state.body}
+            required
           >
             add comment
           </textarea>

@@ -52,7 +52,6 @@ class Comments extends Component {
       prevProp.toggle !== this.props.toggle ||
       prevState.delete !== this.state.delete
     ) {
-      console.log("updated");
       this.fetchComments();
     }
   }

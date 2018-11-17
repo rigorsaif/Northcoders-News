@@ -18,6 +18,7 @@ class ArticleAdder extends Component {
             id="title"
             onChange={this.handleChange}
             value={this.state.title}
+            required
           />
           <br />
           <label htmlFor="body">your article </label> <br />
@@ -28,6 +29,7 @@ class ArticleAdder extends Component {
             rows="10"
             onChange={this.handleChange}
             value={this.state.body}
+            required
           />
           <button className="btn btn-outline-success">Submit</button>
         </form>

@@ -43,14 +43,21 @@ class App extends Component {
     );
   }
 
-  login = (userName, password) => {
+  componentDidMount () {
+    this.setState ({
+      user: JSON.parse(localStorage.getItem("userData"))
+    })
+  }
+
+  login = userName => {
     api
       .getUser(userName)
       .then(userData => {
         const [user] = userData.user;
+        localStorage.setItem("userData",JSON.stringify(user));
         this.setState({
           user,
-          error:null
+          error: null
         });
       })
       .catch(err =>
@@ -61,6 +68,7 @@ class App extends Component {
   };
 
   signOut = () => {
+    localStorage.removeItem("userData");
     this.setState({
       user: null
     });

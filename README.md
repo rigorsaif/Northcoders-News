@@ -2,7 +2,7 @@
 
 Northcoders News is a news feed app to demonstrate a simple one page react website. This repo contains the front-end of the app with a back-end server which i have build earlier with Express server and MongoDB.
 
-the deployed webite for front end
+the deployed website for front end
 [Click this link to view front-end](https://minia-news.netlify.com/)
 
 the back-end api is hosted on heroku
@@ -48,17 +48,10 @@ $ npm install
 
 The dependencies that will install are:
 
-<<<<<<< HEAD
 - @reach/router: ^1.2.1
 - axios: ^0.18.0
 - react: ^16.6.0
 - react-bootstrap: ^0.32.4
-=======
-- @reach/router
-- axios
-- react
-- react-bootstrap
->>>>>>> e82b9af1c7e20c813fd4d186858cc94817f1f153
 
 ### Development
 
