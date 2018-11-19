@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api/utils";
+import PropTypes from "prop-types";
 
 const DeleteComment = ({ commentId, toggle }) => {
   return (
@@ -14,6 +15,10 @@ const DeleteComment = ({ commentId, toggle }) => {
       </button>
     </div>
   );
+};
+DeleteComment.propTypes = {
+  commentId: PropTypes.string.isRequired,
+  toggle: PropTypes.func.isRequired
 };
 
 export default DeleteComment;

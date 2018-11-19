@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api/utils";
+import PropTypes from "prop-types";
 class CommentAdder extends Component {
   state = {
     body: "",
@@ -48,4 +49,10 @@ class CommentAdder extends Component {
   };
 }
 
+CommentAdder.propTypes = {
+  user: PropTypes.object,
+  toggleNewComment: PropTypes.func.isRequired,
+  belongs_to: PropTypes.string.isRequired,
+  created_by: PropTypes.string.isRequired
+};
 export default CommentAdder;

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api/utils";
+import PropTypes from "prop-types";
 class Vote extends Component {
   state = {
     voteChange: 0,
@@ -7,8 +8,9 @@ class Vote extends Component {
   };
   render() {
     let { voteChange } = this.state;
-    return <div>
-      <p className="btn btn-outline-warning m-2" disabled={true}>
+    return (
+      <div>
+        <p className="btn btn-outline-warning m-2" disabled={true}>
           {this.props.votes + voteChange}
         </p>
         <button
@@ -19,12 +21,16 @@ class Vote extends Component {
               ? this.handleVote("down")
               : false
           }
-        className={voteChange === 0
-          ? "btn btn-outline-primary" : "btn btn-outline-danger"}
+          className={
+            voteChange === 0
+              ? "btn btn-outline-primary"
+              : "btn btn-outline-danger"
+          }
         >
           {voteChange ? "Dislike" : "Like"}
         </button>
-      </div>;
+      </div>
+    );
   }
 
   handleVote = vote => {
@@ -41,5 +47,11 @@ class Vote extends Component {
     });
   };
 }
+Vote.propTypes = {
+  votes: PropTypes.number.isRequired,
+  signOut: PropTypes.func,
+  section: PropTypes.string.isRequired,
+  id: PropTypes.string
+};
 
 export default Vote;

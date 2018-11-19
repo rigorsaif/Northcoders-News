@@ -30,7 +30,7 @@ ul {
   .wholePage {
     display: grid;
     height: 100vh;
-    grid-template-columns: 40px 5fr 40px;
+    grid-template-columns: 1px 5fr 1px;
     grid-template-rows: 1fr 5fr 1fr;
     background: url("./components/style/Blur_pexels-97050.jpg");
     background-size: cover;

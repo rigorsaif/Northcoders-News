@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../api/utils";
+import PropTypes from "prop-types";
 class ArticleAdder extends Component {
   state = {
     title: "",
@@ -60,5 +61,8 @@ class ArticleAdder extends Component {
     });
   };
 }
-
+ArticleAdder.propTypes = {
+  belongs_to: PropTypes.string.isRequired,
+  created_by: PropTypes.string.isRequired
+};
 export default ArticleAdder;

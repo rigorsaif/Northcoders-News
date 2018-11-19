@@ -48,10 +48,12 @@ $ npm install
 
 The dependencies that will install are:
 
-- @reach/router: ^1.2.1
-- axios: ^0.18.0
-- react: ^16.6.0
-- react-bootstrap: ^0.32.4
+* @reach/router: ^1.2.1
+* axios: ^0.18.0
+* react: ^16.6.0
+* react-bootstrap: ^0.32.4
+* react-dom: ^16.6.0
+* react-scripts: 2.0.5
 
 ### Development
 
@@ -60,6 +62,15 @@ Once everything is installed, you can run the app locally
 ```
 $ npm start
 ```
+
+## Deployment
+
+My app has been deployed using [Netlify](https://www.netlify.com/). 
+
+I recommend using this service too for easy, free deployment.
+
+[Follow this tutorial to find out how](https://www.netlify.com/blog/2016/07/22/deploy-react-apps-in-less-than-30-seconds/)
+
 
 # created by
 

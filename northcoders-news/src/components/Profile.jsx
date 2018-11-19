@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./style/Profile.css";
+import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.css";
 
 class Profile extends Component {
@@ -40,5 +41,8 @@ class Profile extends Component {
     });
   };
 }
-
+Profile.propTypes = {
+  user: PropTypes.object,
+  signOut: PropTypes.func.isRequired
+};
 export default Profile;

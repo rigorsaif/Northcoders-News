@@ -18,7 +18,7 @@ class App extends Component {
       <div className="App">
         <div className="wholePage">
           <Auth
-            username={this.state.user}
+            user={this.state.user}
             login={this.login}
             error={this.state.error}
           >

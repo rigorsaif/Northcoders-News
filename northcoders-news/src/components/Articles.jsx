@@ -7,6 +7,7 @@ import Comments from "./Comments";
 import Vote from "./Vote";
 import ArticleAdder from "./ArticleAdder";
 import CommentAdder from "./CommentAdder";
+import PropTypes from "prop-types";
 class Articles extends Component {
   state = {
     articles: null,
@@ -69,9 +70,7 @@ class Articles extends Component {
                     <p>{new Date(article.created_at).toDateString()}</p>
                     <p>
                       tags:
-                      <Link
-                        to={`/articles/${article.belongs_to}/`}
-                      >
+                      <Link to={`/articles/${article.belongs_to}/`}>
                         {" "}
                         {article.belongs_to}
                       </Link>
@@ -168,5 +167,10 @@ class Articles extends Component {
     this.setState({ newComment: !this.state.newComment });
   };
 }
+Articles.propTypes = {
+  user: PropTypes.object,
+  id: PropTypes.string,
+  slug: PropTypes.string
+};
 
 export default Articles;

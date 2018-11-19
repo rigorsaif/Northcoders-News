@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import * as api from "../api/utils";
 import Vote from "./Vote";
 import DeleteComment from "./DeleteComment";
 import "./style/Comments.css";
+
 class Comments extends Component {
   state = {
     comments: [],
@@ -72,5 +74,9 @@ class Comments extends Component {
     });
   };
 }
+Comments.propTypes = {
+  user: PropTypes.object.isRequired,
+  id: PropTypes.string
+};
 
 export default Comments;
