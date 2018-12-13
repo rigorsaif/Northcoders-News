@@ -1,8 +1,7 @@
 .articleContainer {
   border: 1px white solid;
   grid-area: main;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: #151E29;
 }
 .articleContainer input {
   background: transparent;
@@ -72,8 +71,8 @@ li a:hover {
   .articleContainer {
     border: 1px rgb(177, 17, 17) solid;
     grid-column: 1/ -1;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+    grid-row: 2/ -1;
+    background-color: "#151E29";
     margin: 2%;
   }
 

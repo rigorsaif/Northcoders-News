@@ -8,8 +8,10 @@ class Nav extends Component {
   };
   render() {
     const { topics } = this.state;
+
     return topics ? (
       <ul className="topicMenu">
+        
         <li>
           {" "}
           <h2 className="btn btn-primary">Topics</h2>
@@ -39,6 +41,5 @@ class Nav extends Component {
     });
   };
 }
-
 
 export default Nav;

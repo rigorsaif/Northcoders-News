@@ -24,7 +24,7 @@ class Comments extends Component {
                     alt="avatar"
                     className="commentAvatar"
                   />
-                  <h6>{comment.created_by.username}</h6>
+                  <h6>{comment.created_by.username.toUpperCase()}</h6>
                   <p>{comment.body}</p>
                   <Vote
                     section="comments"
