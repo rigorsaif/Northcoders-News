@@ -53,14 +53,8 @@ class FullScreenDialog extends React.Component {
 
   render() {
     const { classes, signOut, user } = this.props;
-    console.log(signOut)
     return (
       <div>
-        {/* <IconButton color="White">
-        <Typography variant="h6" color="white" onClick={this.handleClickOpen}>
-            {user.username.toUpperCase()}
-          </Typography>
-        </IconButton> */}
         <Dialog
           fullScreen
           open={this.props.open}
@@ -92,7 +86,10 @@ class FullScreenDialog extends React.Component {
           <div className={classes.root}>
             <Grid container spacing={24}>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>xs=12</Paper>
+                <Paper className={classes.paper}>
+                  <img src={user.avatar_url}  width="200" height= "200" alt="jsj"/><br />
+                  <button onClick={() => alert("Will Add the functionality later")} className="btn btn-outline-warning m-2">Change Picture</button>
+                </Paper>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Paper className={classes.paper}>xs=12 sm=6</Paper>

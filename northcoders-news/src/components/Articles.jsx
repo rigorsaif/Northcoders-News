@@ -8,6 +8,13 @@ import Vote from "./Vote";
 import ArticleAdder from "./ArticleAdder";
 import CommentAdder from "./CommentAdder";
 import PropTypes from "prop-types";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import { withStyles } from "@material-ui/core/styles";
+const styles = theme => ({
+  progress: {
+    margin: theme.spacing.unit * 12
+  }
+});
 class Articles extends Component {
   state = {
     articles: null,
@@ -24,7 +31,7 @@ class Articles extends Component {
     this.fetchArticles();
   }
   render() {
-    const { slug } = this.props;
+    const { slug, classes } = this.props;
     const { articles, addArticle } = this.state;
     return articles ? (
       <main className="articleContainer">
@@ -123,7 +130,7 @@ class Articles extends Component {
         </div>
       </main>
     ) : (
-      "loading"
+      <CircularProgress className={classes.progress} color="secondary" />
     );
   }
   fetchArticles = () => {
@@ -173,4 +180,4 @@ Articles.propTypes = {
   slug: PropTypes.string
 };
 
-export default Articles;
+export default withStyles(styles)(Articles);

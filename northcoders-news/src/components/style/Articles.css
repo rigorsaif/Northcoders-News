@@ -85,9 +85,9 @@ li a:hover {
     height: 30px;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
-    margin-left: 2%;
-    margin-left: 25;
-    margin-bottom: -40px;
+    margin-left: 10%;
+    width: 80%;
+    margin-bottom: 2%
   }
 
   .articleContainer textarea {
@@ -95,11 +95,12 @@ li a:hover {
     border: none;
     color: white;
     font-weight: bolder;
-    padding-left: 20px;
     text-emphasis: center;
     height: 150px;
+    width: 80%;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
+    margin-left: 10%;
   }
   .articlesList {
     color: #fff;
