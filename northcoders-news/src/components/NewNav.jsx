@@ -6,21 +6,17 @@ import {
   IconButton,
   Typography,
   InputBase,
-  Badge,
   MenuItem,
   Menu,
   Avatar
 } from "@material-ui/core/";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 import { withStyles } from "@material-ui/core/styles";
-import HomeIcon from "@material-ui/icons/Home";
 import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "@reach/router";
 import FullScreenDialog from "./ProfileSlider";
+import Topics from "./Topics";
 
 const styles = theme => ({
   root: {
@@ -94,6 +90,10 @@ const styles = theme => ({
     marginLeft: 5,
     width: 50,
     height: 50
+  },
+  homeIcon: {
+    width: 30,
+    height: 30
   }
 });
 
@@ -132,19 +132,6 @@ class PrimarySearchAppBar extends React.Component {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    const renderMenu = (
-      <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
-        transformOrigin={{ vertical: "top", horizontal: "right" }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
-      >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleMenuClose}>My account</MenuItem>
-      </Menu>
-    );
-
     const renderMobileMenu = (
       <Menu
         anchorEl={mobileMoreAnchorEl}
@@ -154,14 +141,24 @@ class PrimarySearchAppBar extends React.Component {
         onClose={this.handleMobileMenuClose}
       >
         <MenuItem>
-          <IconButton color="inherit">
-            <Badge badgeContent={4} color="secondary">
-              <MailIcon />
-            </Badge>
+          <IconButton
+            aria-owns={isMenuOpen ? "material-appbar" : undefined}
+            aria-haspopup="true"
+            onClick={this.handleClickOpen}
+            color="inherit"
+          >
+            <Typography color="inherit">
+              {this.props.user.name.toUpperCase()}
+            </Typography>
+            <Avatar
+              alt="user"
+              src={this.props.user.avatar_url}
+              className={classes.bigAvatar}
+            />
           </IconButton>
-          <p>Messages</p>
         </MenuItem>
-        <MenuItem>
+        <Topics/>
+        {/* <MenuItem>
           <IconButton color="inherit">
             <Badge badgeContent={11} color="secondary">
               <NotificationsIcon />
@@ -174,7 +171,7 @@ class PrimarySearchAppBar extends React.Component {
             <AccountCircle />
           </IconButton>
           <p>Profile</p>
-        </MenuItem>
+        </MenuItem> */}
       </Menu>
     );
 
@@ -183,12 +180,11 @@ class PrimarySearchAppBar extends React.Component {
         <AppBar position="static">
           <Toolbar>
             <Link to="/">
-              <IconButton
-                className={classes.menuButton}
-                color="Black"
-                aria-label="Open drawer"
-              >
-                <HomeIcon />
+              <IconButton color="inherit">
+                <Avatar
+                  src={require("./style/Home.png")}
+                  className={classes.homeIcon}
+                />
               </IconButton>
             </Link>
             <Typography
@@ -196,7 +192,7 @@ class PrimarySearchAppBar extends React.Component {
               variant="h6"
               color="inherit"
               noWrap
-            />
+            > Minia News</Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -208,25 +204,21 @@ class PrimarySearchAppBar extends React.Component {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <FullScreenDialog user={this.props.user} open={this.state.open} />
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <MailIcon />
-                </Badge>
-              </IconButton>
-              <IconButton color="inherit">
-                <Badge badgeContent={17} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
+              <FullScreenDialog
+                handleClickOpen={this.handleClickOpen}
+                user={this.props.user}
+                open={this.state.open}
+                signOut={this.props.signOut}
+              />
+              <Topics />
               <IconButton
                 aria-owns={isMenuOpen ? "material-appbar" : undefined}
                 aria-haspopup="true"
                 onClick={this.handleClickOpen}
                 color="inherit"
               >
-                <Typography variant="h6" color="white">
-                  {this.props.user.username.toUpperCase()}
+                <Typography color="inherit">
+                  {this.props.user.name.toUpperCase()}
                 </Typography>
                 <Avatar
                   alt="user"
@@ -246,7 +238,6 @@ class PrimarySearchAppBar extends React.Component {
             </div>
           </Toolbar>
         </AppBar>
-        {renderMenu}
         {renderMobileMenu}
       </div>
     );

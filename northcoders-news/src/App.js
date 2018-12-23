@@ -25,7 +25,7 @@ class App extends Component {
             error={this.state.error}
           >
             {/* <Nav className="nav" /> */}
-            <PrimarySearchAppBar user={this.state.user}/>
+            <PrimarySearchAppBar user={this.state.user} signOut={this.signOut}/>
             {/* <FullScreenDialog
               signOut={this.signOut}
               user={this.state.user}

@@ -1,7 +1,7 @@
 .articleContainer {
-  border: 1px white solid;
+  border: 1px #2c343e;
   grid-area: main;
-  background-color: #151E29;
+  background-color: #2c343e;
 }
 .articleContainer input {
   background: transparent;
@@ -69,11 +69,10 @@ li a:hover {
 
 @media screen and (max-width: 660px) {
   .articleContainer {
-    border: 1px rgb(177, 17, 17) solid;
+    border: 1px #2c343e solid;
     grid-column: 1/ -1;
     grid-row: 2/ -1;
     background-color: "#151E29";
-    margin: 2%;
   }
 
   .articleContainer input {

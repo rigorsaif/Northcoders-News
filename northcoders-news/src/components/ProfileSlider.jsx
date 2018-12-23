@@ -20,7 +20,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import "bootstrap/dist/css/bootstrap.css";
 
-const styles =(theme)=> ({
+const styles = theme => ({
   appBar: {
     position: "relative"
   },
@@ -46,32 +46,44 @@ class FullScreenDialog extends React.Component {
     close: false
   };
 
-  handleClickOpen = () => {
-    this.setState({ open: true });
-  };
-
   handleClose = () => {
-    this.setState({ close: true });
+    const { handleClickOpen } = this.props;
+    handleClickOpen();
   };
 
   render() {
     const { classes, signOut, user } = this.props;
-    return <div>
+    console.log(signOut)
+    return (
+      <div>
         {/* <IconButton color="White">
         <Typography variant="h6" color="white" onClick={this.handleClickOpen}>
             {user.username.toUpperCase()}
           </Typography>
         </IconButton> */}
-        <Dialog fullScreen open={this.props.open} onClose={this.handleClose} TransitionComponent={Transition}>
+        <Dialog
+          fullScreen
+          open={this.props.open}
+          onClose={this.handleClose}
+          TransitionComponent={Transition}
+        >
           <AppBar className={classes.appBar}>
             <Toolbar>
-              <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+              <IconButton
+                color="inherit"
+                onClick={this.handleClose}
+                aria-label="Close"
+              >
                 <CloseIcon />
               </IconButton>
-            <Typography variant="h6" color="inherit" className={classes.flex}>
+              <Typography variant="h6" color="inherit" className={classes.flex}>
                 Close
               </Typography>
-              <Avatar alt="user" src={user.avatar_url} className={classes.avatar} />
+              <Avatar
+                alt="user"
+                src={user.avatar_url}
+                className={classes.avatar}
+              />
               <Button color="inherit" onClick={signOut}>
                 SignOut
               </Button>
@@ -115,7 +127,8 @@ class FullScreenDialog extends React.Component {
             </ListItem>
           </List> */}
         </Dialog>
-      </div>;
+      </div>
+    );
   }
 }
 
