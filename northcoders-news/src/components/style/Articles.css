@@ -1,18 +1,19 @@
 .articleContainer {
-  border: 1px white solid;
+  border-top: 1px #e8491d solid;
   grid-area: main;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
+  background-image: url("./press.jpg");
+  background-repeat: no-repeat, repeat;
+  background-size: cover;
 }
 .articleContainer input {
   background: transparent;
   border: none;
-  color: white;
+  color: black;
   font-weight: bolder;
   padding-left: 20px;
   text-emphasis: center;
   height: 30px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid black;
   border-radius: 20px;
   margin-left: 10px;
   margin-left: 80px;
@@ -23,12 +24,12 @@
 .articleContainer textarea {
   background: transparent;
   border: none;
-  color: white;
+  color: black;
   font-weight: bolder;
   padding-left: 20px;
   text-emphasis: center;
   height: 150px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid black;
   border-radius: 20px;
   margin: 10px;
   margin-left: 150px;
@@ -53,9 +54,11 @@
 }
 
 .articlesList li {
-  border: 1px solid whitesmoke;
-  margin: 10px;
-  padding: 10px;
+  border: 1px solid #e8491d;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  margin: 0px 10% 1.5% 10%;
+  padding: 20px;
 }
 
 li a {
@@ -70,11 +73,10 @@ li a:hover {
 
 @media screen and (max-width: 660px) {
   .articleContainer {
-    border: 1px rgb(177, 17, 17) solid;
+    border-top: 0.5px #e8491d solid;
     grid-column: 1/ -1;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
-    margin: 2%;
+    grid-row: 2/ -1;
+    background-color: "#151E29";
   }
 
   .articleContainer input {
@@ -87,9 +89,9 @@ li a:hover {
     height: 30px;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
-    margin-left: 2%;
-    margin-left: 25;
-    margin-bottom: -40px;
+    margin-left: 10%;
+    width: 80%;
+    margin-bottom: 2%;
   }
 
   .articleContainer textarea {
@@ -97,11 +99,12 @@ li a:hover {
     border: none;
     color: white;
     font-weight: bolder;
-    padding-left: 20px;
     text-emphasis: center;
     height: 150px;
+    width: 80%;
     border: 1px solid rgb(255, 255, 255);
     border-radius: 20px;
+    margin-left: 10%;
   }
   .articlesList {
     color: #fff;
@@ -118,5 +121,12 @@ li a:hover {
     align-items: center;
     padding: 0%;
     margin: 2%;
+  }
+  .articlesList li {
+    border: 1px solid #e8491d;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    margin: 0px 2% 3% 2%;
+    padding: 20px;
   }
 }

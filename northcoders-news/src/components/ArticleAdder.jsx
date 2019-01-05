@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../api/utils";
 import PropTypes from "prop-types";
+import "./style/ArticleAdder.css";
 class ArticleAdder extends Component {
   state = {
     title: "",
@@ -10,7 +11,7 @@ class ArticleAdder extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="articleAdder">
         <form action="" onSubmit={this.handleSubmit}>
           <label htmlFor="title">Enter title </label>
           <input
