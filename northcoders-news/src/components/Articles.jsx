@@ -8,11 +8,11 @@ import Vote from "./Vote";
 import ArticleAdder from "./ArticleAdder";
 import CommentAdder from "./CommentAdder";
 import PropTypes from "prop-types";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { CircularProgress, Grid } from "@material-ui/core/";
 import { withStyles } from "@material-ui/core/styles";
 const styles = theme => ({
   progress: {
-    margin: theme.spacing.unit * 12
+    margin: theme.spacing.unit * 50
   }
 });
 class Articles extends Component {
@@ -57,52 +57,90 @@ class Articles extends Component {
               if (articles.length > 1) {
                 return (
                   <li key={article._id}>
-                    <Link to={`/articles/${article.belongs_to}/${article._id}`}>
-                      <h4>{article.title}</h4>
-                    </Link>
-                    <h5>
-                      Author:{" "}
-                      {article.created_by.username || this.props.user.username}
-                    </h5>
-                    <Vote
-                      votes={article.votes}
-                      section={"articles"}
-                      id={article._id}
-                    />
-                    <Link to={`/articles/${article.belongs_to}/${article._id}`}>
-                      <p className="btn btn-outline-warning m-2">
-                        comments: {article.comment_count}
-                      </p>
-                    </Link>
-                    <p>{new Date(article.created_at).toDateString()}</p>
-                    <p>
-                      tags:
-                      <Link to={`/articles/${article.belongs_to}/`}>
-                        {" "}
-                        {article.belongs_to}
-                      </Link>
-                    </p>
+                    <Grid container spacing={24}>
+                      <Grid item xs={12}>
+                        <Link
+                          to={`/articles/${article.belongs_to}/${article._id}`}
+                        >
+                          <h4 style={{ textAlign: "center" }}>
+                            {article.title}
+                          </h4>
+                        </Link>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <h6>
+                          By:{" "}
+                          {article.created_by.username.toUpperCase() ||
+                            this.props.user.username.toUpperCase()}
+                        </h6>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Vote
+                          votes={article.votes}
+                          section={"articles"}
+                          id={article._id}
+                        />
+                      </Grid>
+                      <Grid item xs={6}>
+                        <div style={{ textAlign: "right", display: "block" }}>
+                          <Link
+                            to={`/articles/${article.belongs_to}/${
+                              article._id
+                            }`}
+                          >
+                            <p className="btn btn-outline-warning m-2">
+                              comments: {article.comment_count}
+                            </p>
+                          </Link>
+                        </div>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <p>{new Date(article.created_at).toDateString()}</p>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <div style={{ textAlign: "right", display: "block" }}>
+                          <p>
+                            tags:
+                            <Link to={`/articles/${article.belongs_to}/`}>
+                              {" "}
+                              {article.belongs_to}
+                            </Link>
+                          </p>
+                        </div>
+                      </Grid>
+                    </Grid>
                   </li>
                 );
               } else {
                 return (
                   <li key={article._id}>
-                    <Link to={`/articles/${article.belongs_to}/${article._id}`}>
-                      <h4>{article.title}</h4>
-                    </Link>
+                    <Grid container spacing={24}>
+                    <Grid item xs={12}>
+                          <h4 style={{ textAlign: "center" }}>{article.title}</h4>
+                    </Grid>
+                    <Grid item xs={12}>
                     <p>{article.body}</p>
-                    <h5>
-                      Author:{" "}
+                    </Grid>
+                      <Grid item xs={12}>
+                    <h6>
+                      By:{" "}
                       {article.created_by.username || this.props.user.username}
-                    </h5>
+                    </h6>
+                    </Grid>
+                      <Grid item xs={6}>
                     <Vote
                       votes={article.votes}
                       section={"articles"}
                       id={article._id}
                     />
-                    <p className="btn btn-outline-warning m-2">
-                      comments: {article.comment_count}
-                    </p>
+                    </Grid>
+                    <Grid item xs={6}>
+                        <div style={{ textAlign: "right", display: "block" }}>
+                            <p className="btn btn-outline-warning m-2">
+                              comments: {article.comment_count}
+                            </p>
+                        </div>
+                    </Grid>
                     <p>{new Date(article.created_at).toDateString()}</p>
                     <Comments
                       id={article._id}
@@ -122,6 +160,7 @@ class Articles extends Component {
                         toggleNewComment={this.toggleNewComment}
                       />
                     )}
+                    </Grid>
                   </li>
                 );
               }

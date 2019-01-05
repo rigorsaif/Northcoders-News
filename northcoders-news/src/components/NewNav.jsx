@@ -157,50 +157,46 @@ class PrimarySearchAppBar extends React.Component {
             />
           </IconButton>
         </MenuItem>
-        <Topics/>
-        {/* <MenuItem>
-          <IconButton color="inherit">
-            <Badge badgeContent={11} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          <p>Notifications</p>
-        </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
-          <p>Profile</p>
-        </MenuItem> */}
+        <Topics />
       </Menu>
     );
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar
+          position="static"
+          style={{ background: "rgba(0, 0, 0, 0.5)", boxShadow: "none" }}
+        >
           <Toolbar>
             <Link to="/">
               <IconButton color="inherit">
-                <Avatar
-                  src={require("./style/Home.png")}
-                  className={classes.homeIcon}
+                <img
+                  src="https://i.imgur.com/JO46Eiu.png"
+                  alt="logo"
+                  height="40px"
+                  width="120px"
+                  style={{ marginLeft: "-20px" }}
                 />
               </IconButton>
             </Link>
-            <Typography
-              className={classes.title}
-              variant="h6"
-              color="inherit"
-              noWrap
-            > Minia News</Typography>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{ root: classes.inputRoot, input: classes.inputInput }}
-              />
+              <form
+                onSubmit={event => {
+                  event.preventDefault();
+                  alert("functionality will be added later");
+                }}
+              >
+                <InputBase
+                  placeholder="Search…"
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput
+                  }}
+                />
+              </form>
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

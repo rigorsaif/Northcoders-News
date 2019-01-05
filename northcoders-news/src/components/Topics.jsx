@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import * as api from "../api/utils";
-import { IconButton, Typography, MenuItem, Menu } from "@material-ui/core/";
+import { IconButton, Typography, MenuItem} from "@material-ui/core/";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -26,7 +26,7 @@ class Topics extends Component {
       <>
         {topics.map(topic => {
           return (
-            <MenuItem className={classes.Topic}>
+            <MenuItem className={classes.Topic} key={topic._id}>
               <Link to={`/articles/${topic.slug}`} key={topic._id}>
                 <IconButton color="inherit">
                   <Typography  color="inherit">

@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import "./App.css"
-import { Link, Router } from "../node_modules/@reach/router";
+import { Router } from "../node_modules/@reach/router";
 import Articles from "./components/Articles";
 import Auth from "./components/Auth";
 import * as api from "./api/utils";
-import Profile from "./components/Profile";
-import Nav from "./components/Nav";
 import Errors from "./components/Errors";
-import FullScreenDialog from "./components/ProfileSlider";
 import PrimarySearchAppBar from "./components/NewNav";
 
 class App extends Component {

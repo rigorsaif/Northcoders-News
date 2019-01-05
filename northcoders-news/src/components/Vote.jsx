@@ -23,7 +23,7 @@ class Vote extends Component {
           }
           className={
             voteChange === 0
-              ? "btn btn-outline-success"
+              ? "btn btn-outline-primary"
               : "btn btn-outline-danger"
           }
         >
